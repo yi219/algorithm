@@ -1,0 +1,13 @@
+t = int(input())
+ 
+for i in range(0,t):
+    num = input()
+    if len(num) % 2 == 0:    #짝수
+        k = len(num) // 2
+        print('#', i+1, ' ', int(num[0:k])+int(num[k:]), sep='')
+    else:
+        k = len(num) // 2
+        if int(num[0:k])+int(num[k:])>int(num[0:k+1])+int(num[k+1:]):
+            print('#', i + 1, ' ', int(num[0:k+1])+int(num[k+1:]), sep='')
+        else:
+            print('#', i + 1, ' ', int(num[0:k]) + int(num[k:]), sep='')
