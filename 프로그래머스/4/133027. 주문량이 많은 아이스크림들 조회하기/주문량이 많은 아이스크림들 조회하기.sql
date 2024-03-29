@@ -1,0 +1,11 @@
+# JULY를 FLAVOR 기준으로 다시 만들기
+SELECT FH.FLAVOR
+FROM FIRST_HALF FH LEFT JOIN (
+                            SELECT FLAVOR, SUM(TOTAL_ORDER) AS TOTAL_ORDER
+                            FROM JULY
+                            GROUP BY FLAVOR
+                        ) AS NJ
+    ON FH.FLAVOR = NJ.FLAVOR
+GROUP BY FH.FLAVOR
+ORDER BY FH.TOTAL_ORDER+NJ.TOTAL_ORDER DESC
+LIMIT 3
